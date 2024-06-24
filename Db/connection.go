@@ -3,6 +3,7 @@ package db
 import (
 	"database/sql"
 
+	model "github.con/Ibukun-tech/trust/Internals/Models"
 	"github.con/Ibukun-tech/trust/utils"
 )
 
@@ -11,6 +12,9 @@ type DbConnect struct {
 }
 
 // I am must have a connection that must like take in everything so that each associated handlers can make use of it a nd all of it finish
+type DB interface {
+	CreateUser() (*model.User, error)
+}
 
 func NewDbConnection(pd string) (*DbConnect, error) {
 	connect := utils.ConnectDb()
@@ -21,4 +25,8 @@ func NewDbConnection(pd string) (*DbConnect, error) {
 	return &DbConnect{
 		Db: db,
 	}, nil
+}
+
+func (d *DbConnect) CreateUser() (*model.User, error) {
+
 }
