@@ -6,8 +6,11 @@ import (
 	db "github.con/Ibukun-tech/trust/Db"
 )
 
-func main() {
+func init() {
+
 	db.NewDbConnection()
+}
+func main() {
 
 	s := http.Server{}
 	s.ListenAndServe()

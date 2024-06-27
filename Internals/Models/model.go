@@ -14,6 +14,14 @@ type User struct {
 	UpdatedAt      time.Time `json:"updated_at"`
 }
 
+type ConfigDatabase struct {
+	DbUser   string
+	DbPass   string
+	DbRemote string
+	DbPort   string
+	DbName   string
+}
+
 type Account struct {
 	Id            int       `json:"-"`
 	AccountNumber string    `json:"account_number"`
