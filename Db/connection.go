@@ -15,6 +15,7 @@ type DbConnect struct {
 type DB interface {
 	CreateUser(*model.User) (*model.User, error)
 	ListUsers() ([]*model.User, error)
+	CreateAccount(*model.Account) error
 }
 
 func NewDbConnection(pd string, c model.ConfigDatabase) (*DbConnect, error) {
@@ -78,4 +79,15 @@ func (d *DbConnect) ListUsers() ([]model.User, error) {
 		return nil, err
 	}
 	return users, nil
+}
+
+func (d *DbConnect) CreateAccount(m *model.Account) error {
+	// I can create a validator for the creation on the account
+	query := `insert into account (
+         id, account_number, , balance, created_at                 
+	)
+	values ($1, $2, $3, $4, $5, $6)
+    `
+
+	return nil
 }
