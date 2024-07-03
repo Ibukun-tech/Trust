@@ -21,8 +21,8 @@ func NewUser(dbConnect db.StoreWithTx) *User {
 
 func (u *User) CreateUser(w http.ResponseWriter, r *http.Request) error {
 	if r.Method == http.MethodPost {
-		
-		var 
+
+		// var
 		var user model.User
 		if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 			return err
