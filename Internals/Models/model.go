@@ -50,7 +50,16 @@ func (u *User) ValidateUser() error {
 	u.Email = strings.ToLower(u.Email)
 	u.FirstName = strings.ToUpper(string(u.FirstName[0])) + strings.ToLower(u.FirstName[1:])
 	u.LastName = strings.ToUpper(string(u.LastName[0])) + strings.ToLower(u.LastName[1:])
+	u.Active = true
+	u.Create(true)
 	return nil
+}
+
+func (u *User) Create(t ...bool) {
+	if len(t) > 0 || t[0] {
+		u.CreatedAt = time.Now().UTC()
+	}
+	u.UpdatedAt = time.Now().UTC()
 }
 
 type Account struct {
